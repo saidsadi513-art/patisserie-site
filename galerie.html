@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie Complète - Pâtisserie Fares | Nos Créations</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .galerie-full {
+            padding: 80px 2rem;
+            background: var(--light-color);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .galerie-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .galerie-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--dark-color);
+            margin-bottom: 3rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background: var(--white);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .gallery-grid-full {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .gallery-card-image {
+            position: relative;
+            overflow: hidden;
+            height: 300px;
+        }
+
+        .gallery-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-card:hover .gallery-card-image img {
+            transform: scale(1.1);
+        }
+
+        .gallery-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .gallery-card-content {
+            padding: 1.5rem;
+        }
+
+        .gallery-card-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-card-description {
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .gallery-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .gallery-price {
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .gallery-cta {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-cta:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90vh;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: slideInCenter 0.3s ease;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: var(--white);
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 2001;
+        }
+
+        .modal-close:hover {
+            color: var(--secondary-color);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInCenter {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -60%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .galerie-full {
+                padding: 40px 1rem;
+            }
+
+            .galerie-title {
+                font-size: 2rem;
+            }
+
+            .filter-buttons {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+
+            .gallery-grid-full {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1rem;
+            }
+
+            .gallery-card-image {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-birthday-cake"></i>
+                <span>Pâtisserie Fares</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="menu.html" class="nav-link">Menu</a></li>
+                <li><a href="galerie.html" class="nav-link active">Galerie</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Galerie Section -->
+    <div class="galerie-full">
+        <h1 class="galerie-title">✨ Notre Galerie Complète</h1>
+        <p class="galerie-subtitle">Découvrez toutes nos créations pâtissières d'exception</p>
+
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="tous">Tous</button>
+            <button class="filter-btn" data-filter="mariage">Mariages</button>
+            <button class="filter-btn" data-filter="anniversaire">Anniversaires</button>
+            <button class="filter-btn" data-filter="special">Créations Spéciales</button>
+            <button class="filter-btn" data-filter="plateau">Plateaux</button>
+        </div>
+
+        <div class="gallery-grid-full" id="galeryGrid">
+            <!-- Mariages -->
+            <div class="gallery-card" data-category="mariage">
+                <div class="gallery-card-image">
+                    <img src="https://via.placeholder.com/400x300/FFB6C1/FF1493?text=Gâteau+Rose+Mariage" alt="Gâteau rose mariage">
+                    <span class="gallery-badge">Mariage</span>
+                </div>
+                <div class="gallery-card-content">
+                    <h3 class="gallery-card-title">Rose & Blanc Élégant</h3>
+                    <p class="gallery-card-description">Trois étages en rose poudré avec motifs raffinés et fleurs fraîches. Parfait pour un mariage romantique.</p>
+                    <div class="gallery-card-footer">
+                        <span class="gallery-price">À partir de 350 DH</span>
+                        <a href="index.html#contact" class="gallery-cta">Commander</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-card" data-category="mariage">
+                <div class="gallery-card-image">
+                    <img src="https://via.placeholder.com/400x300/FFD700/FFA500?text=Gâteau+Or+Mariage" alt="Gâteau or mariage">
+                    <span class="gallery-badge">Mariage</span>
+                </div>
+                <div class="gallery-card-content">
+                    <h3 class="gallery-card-title">Création Dorée Luxe</h3>
+                    <p class="gallery-card-description">Design géométrique avec bandes dorées et touches de brillance. Un mariage glamour et moderne.</p>
+                    <div class="gallery-card-footer">
+                        <span class="gallery-price">À partir de 380 DH</span>
+                        <a href="index.html#contact" class="gallery-cta">Commander</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-card" data-category="mariage">
+                <div class="gallery-card-image">
+                    <img src="https://via.placeholder.com/400x300/FF69B4/FFB6C1?text=Gâteau+Classique+Mariage" alt="Gâteau classique">
+                    <span class="gallery-badge">Mariage</span>
+                </div>
+                <div class="gallery-card-content">
+                    <h3 class="gallery-card-title">Gâteau Classique Chic</h3>
+                    <p class="gallery-card-description">Intemporel et élégant avec perles comestibles. Un choix traditionnel pour les couples classiques.</p>
+                    <div class="gallery-card-footer">
+                        <span class="gallery-price">À partir de 320 DH</span>
+                        <a href="index.html#contact" class="gallery-cta">Commander</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Anniversaires -->
+            <div class="gallery-card" data-category="anniversaire">
+                <div class="gallery-card-image">
+                    <img src="https://via.placeholder.com/400x300/FF1493/FF69B4?text=Gâteau+Anniversaire+Enfant" alt="Gâteau anniversaire">
+                    <span class="gallery-badge">Anniversaire</span>
+                </div>
+                <div class="gallery-card-content">
+                    <h3 class="gallery-card-title">Joyeux Anniversaire Enfant</h3>
+                    <p class="gallery-card-description">Couleurs vives et joyeuses pour célébrer l'anniversaire de vos enfants. Saveurs gourmandes garanties!</p>
+                    <div class="gallery-card-footer">
+                        <span class="gallery-price">À partir de 150 DH</span>
+                        <a href="index.html#contact" class="gallery-cta">Commander</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-card" data-category="anniversaire">
+                <div class="gallery-card-image">
+                    <img src="https://via.placeholder.com/400x300/FFB6C1/FF1493?text=Gâteau+Anniversaire+Adulte" alt="Gâteau adulte">
+                    <span class="gallery-badge">Anniversaire</span>
+                </div>
+                <div class="gallery-card-content">
+                    <h3 class="gallery-card-title">Anniversaire Adulte Sophistiqué</h3>
+                    <p class="gallery-card-description">Design élégant et raffiné pour célébrer un anniversaire mémorable avec style et élégance.</p>
+                    <div class="gallery-card-footer">
+                        <span class="gallery-price">À partir de 220 DH</span>
+                        <a href="index.html#contact" class="gallery-cta">Commander</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-card" data-category="anniversaire">
+                <div class="gallery-card-image">
+                    <img src="https://via.placeholder.com/400x300/FFA500/FF8C00?text=Gâteau+Chocolat+Anniversaire" alt="Gâteau chocolat">
+                    <span class="gallery-badge">Anniversaire</span>
+                </div>
+                <div class="gallery-card-content">
+                    <h3 class="gallery-card-title">Gâteau Chocolat Premium</h3>
+                    <p class="gallery-card-description">Pour les amateurs de chocolat. Saveur intense et décoration luxe avec fruits frais.</p>
+                    <div class="gallery-card-footer">
+                        <span class="gallery-price">À partir de 200 DH</span>
+                        <a href="index.html#contact" class="gallery-cta">Commander</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Créations Spéciales -->
+            <div class="gallery-card" data-category="special">
+                <div class="gallery-card-image">
+                    <img src="https://via.placeholder.com/400x300/FF69B4/FFB6C1?text=Pièce+Montée" alt="Pièce montée">
+                    <span class="gallery-badge">Spéciale</span>
+                </div>
+                <div class="gallery-card-content">
+                    <h3 class="gallery-card-title">Pièce Montée Exceptionnelle</h3>
+                    <p class="gallery-card-description">Création impressionnante pour les grands événements. Architecture pâtissière grandiose et spectaculaire.</p>
+                    <div class="gallery-card-footer">
+                        <span class="gallery-price">À partir de 500 DH</span>
+                        <a href="index.html#contact" class="gallery-cta">Commander</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-card" data-category="special">
+                <div class="gallery-card-image">
+                    <img src="https://via.placeholder.com/400x300/FFD700/FFA500?text=Gâteau+Miroir" alt="Gâteau miroir">
+                    <span class="gallery-badge">Spéciale</span>
+                </div>
+                <div class="gallery-card-content">
+                    <h3 class="gallery-card-title">Gâteau Miroir Brillant</h3>
+                    <p class="gallery-card-description">Glaçage miroir scintillant. Un effet visuel spectaculaire et une saveur délicieuse garantie.</p>
+                    <div class="gallery-card-footer">
+                        <span class="gallery-price">À partir de 280 DH</span>
+                        <a href="index.html#contact" class="gallery-cta">Commander</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-card" data-category="special">
+                <div class="gallery-card-image">
+                    <img src="https://via.placeholder.com/400x300/FFB6C1/FF1493?text=Naked+Cake" alt="Naked cake">
+                    <span class="gallery-badge">Spéciale</span>
+                </div>
+                <div class="gallery-card-content">
+                    <h3 class="gallery-card-title">Naked Cake Naturel</h3>
+                    <p class="gallery-card-description">Gâteau déstructuré avec fruits frais. Style tendance et saveur naturelle. Parfait pour les moments intimes.</p>
+                    <div class="gallery-card-footer">
+                        <span class="gallery-price">À partir de 220 DH</span>
+                        <a href="index.html#contact" class="gallery-cta">Commander</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plateaux Gourmands -->
+            <div class="gallery-card" data-category="plateau">
+                <div class="gallery-card-image">
+                    <img src="https://via.placeholder.com/400x300/FFB6C1/FF69B4?text=Plateau+Petit" alt="Plateau petit">
+                    <span class="gallery-badge">Plateau</span>
+                </div>
+                <div class="gallery-card-content">
+                    <h3 class="gallery-card-title">Plateau Petit Gourmand</h3>
+                    <p class="gallery-card-description">Pour 10 personnes. Sélection variée de nos meilleures pâtisseries. Parfait pour petit événement.</p>
+                    <div class="gallery-card-footer">
+                        <span class="gallery-price">150 DH</span>
+                        <a href="index.html#contact" class="gallery-cta">Commander</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-card" data-category="plateau">
+                <div class="gallery-card-image">
+                    <img src="https://via.placeholder.com/400x300/FFD700/FFA500?text=Plateau+Moyen" alt="Plateau moyen">
+                    <span class="gallery-badge">Plateau</span>
+                </div>
+                <div class="gallery-card-content">
+                    <h3 class="gallery-card-title">Plateau Moyen Délices</h3>
+                    <p class="gallery-card-description">Pour 20 personnes. Vaste gamme de création pâtissière. Idéal pour réception et événement.</p>
+                    <div class="gallery-card-footer">
+                        <span class="gallery-price">300 DH</span>
+                        <a href="index.html#contact" class="gallery-cta">Commander</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-card" data-category="plateau">
+                <div class="gallery-card-image">
+                    <img src="https://via.placeholder.com/400x300/FFB6C1/FF1493?text=Plateau+Grand" alt="Plateau grand">
+                    <span class="gallery-badge">Plateau</span>
+                </div>
+                <div class="gallery-card-content">
+                    <h3 class="gallery-card-title">Plateau Grand Prestige</h3>
+                    <p class="gallery-card-description">Pour 40 personnes. Création complète avec variété maximale. Événement d'exception garanti!</p>
+                    <div class="gallery-card-footer">
+                        <span class="gallery-price">600 DH</span>
+                        <a href="index.html#contact" class="gallery-cta">Commander</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Pâtisserie Fares. Tous droits réservés. | 0559461051</p>
+            <div class="social-links">
+                <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filtrage galerie
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryCards = document.querySelectorAll('.gallery-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Retirer la classe active de tous les boutons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Ajouter la classe active au bouton cliqué
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                galleryCards.forEach(card => {
+                    if (filter === 'tous') {
+                        card.style.display = 'block';
+                        setTimeout(() => card.style.opacity = '1', 0);
+                    } else {
+                        if (card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                            setTimeout(() => card.style.opacity = '1', 0);
+   
