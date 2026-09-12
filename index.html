@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pâtisserie Fares - Gâteaux Artisanaux & Desserts Gourmands</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+        
+        // Remplacez G-XXXXXXXXXX par votre ID Google Analytics 4
+        // Exemple: G-ABC123XYZ45
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-birthday-cake"></i>
+                <span>Pâtisserie Fares</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#accueil" class="nav-link active">Accueil</a></li>
+                <li><a href="menu.html" class="nav-link">Menu</a></li>
+                <li><a href="galerie.html" class="nav-link">Galerie</a></li>
+                <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="reservation.html" class="nav-link">Réservation</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="hero-content">
+            <h1 class="hero-title">Pâtisserie Fares</h1>
+            <p class="hero-subtitle">Des créations pâtissières artisanales qui subliment vos moments</p>
+            <button class="cta-button" onclick="document.getElementById('galerie').scrollIntoView({ behavior: 'smooth' })">Découvrir nos créations</button>
+        </div>
+        <div class="hero-background"></div>
+    </section>
+
+    <!-- À Propos Section -->
+    <section class="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Bienvenue chez Pâtisserie Fares</h2>
+                <p>Depuis des années, nous créons des gâteaux et desserts d'exception, en utilisant uniquement les meilleurs ingrédients pour garantir une qualité premium. Notre passion pour la pâtisserie se reflète dans chaque création.</p>
+                <p>Chaque gâteau est pensé avec amour et décorée avec passion pour transformer vos moments spéciaux en souvenirs gourmands inoubliables. Mariages, anniversaires, événements... nous sommes là pour sublimer chaque occasion.</p>
+                <div class="features">
+                    <div class="feature-item">
+                        <i class="fas fa-star"></i>
+                        <span>Qualité Premium</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-heart"></i>
+                        <span>Fait avec Amour</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-palette"></i>
+                        <span>Designs Uniques</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="https://via.placeholder.com/400x300/FFB6C1/FF69B4?text=Créations+Pâtisserie+Fares" alt="Nos créations pâtissières">
+            </div>
+        </div>
+    </section>
+
+    <!-- Galerie Section -->
+    <section class="galerie" id="galerie">
+        <h2 class="section-title">Notre Galerie</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/300x300/FF1493/FFB6C1?text=Gâteau+Rose" alt="Gâteau rose luxe">
+                <div class="gallery-overlay">
+                    <h3>Gâteau Rose Luxe</h3>
+                    <p>Velours et élégance</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/300x300/FFD700/FFA500?text=Gâteau+Or" alt="Gâteau doré">
+                <div class="gallery-overlay">
+                    <h3>Création Dorée</h3>
+                    <p>Brillance et sophistication</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/300x300/FF69B4/FF1493?text=Anniversaire" alt="Gâteau anniversaire">
+                <div class="gallery-overlay">
+                    <h3>Joyeux Anniversaire</h3>
+                    <p>Joie et couleurs</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/300x300/FFB6C1/FF69B4?text=Plateau+Gourmand" alt="Plateau desserts">
+                <div class="gallery-overlay">
+                    <h3>Plateau Gourmand</h3>
+                    <p>Variété délicieuse</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/300x300/FFA500/FF8C00?text=Création+Épicée" alt="Gâteau épicé">
+                <div class="gallery-overlay">
+                    <h3>Création Épicée</h3>
+                    <p>Saveurs exotiques</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/300x300/FF69B4/FFB6C1?text=Personnalisé" alt="Gâteau personnalisé">
+                <div class="gallery-overlay">
+                    <h3>Personnalisé</h3>
+                    <p>Selon vos envies</p>
+                </div>
+            </div>
+        </div>
+        <div class="view-all">
+            <a href="galerie.html" class="btn-secondary">Voir toute la galerie</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2 class="section-title">Nos Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-ring"></i>
+                </div>
+                <h3>Gâteaux de Mariage</h3>
+                <p>Des créations élégantes et personnalisées pour votre plus beau jour. Designs raffinés et saveurs exquises.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-birthday-cake"></i>
+                </div>
+                <h3>Anniversaires</h3>
+                <p>Gâteaux colorés et fun pour célébrer vos moments spéciaux avec joie et gourmandise.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <h3>Événements</h3>
+                <p>Créations sur mesure pour tous vos événements : corporatifs, familiaux, réceptions et occasions spéciales.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h3>Desserts Individuels</h3>
+                <p>Petits gâteaux, macarons et desserts raffinés pour vos réceptions et moments de partage.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Horaires Section -->
+    <section class="horaires">
+        <div class="horaires-container">
+            <h2>Nos Horaires</h2>
+            <div class="horaires-content">
+                <div class="horaires-info">
+                    <p><strong>Du Lundi au Dimanche :</strong></p>
+                    <p class="horaire-time">8h00 - 17h00</p>
+                </div>
+                <div class="horaires-contact">
+                    <a href="tel:0559461051" class="btn-primary">
+                        <i class="fas fa-phone"></i> Appeler
+                    </a>
+                    <a href="reservation.html" class="btn-primary" style="margin-left: 1rem;">
+                        <i class="fas fa-calendar"></i> Réserver
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Témoignages Section -->
+    <section class="testimonials">
+        <h2 class="section-title">Avis de nos clients</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"Un service exceptionnel et des gâteaux délicieux ! Les créations de Pâtisserie Fares ont été parfaites pour notre mariage."</p>
+                <h4>Sophie & Marc</h4>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"Les gâteaux sont tellement beaux qu'on hésite à les manger ! Merci pour cette création magistrale et délicieuse."</p>
+                <h4>Lina</h4>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"Un talent incroyable pour transformer les gâteaux en véritables œuvres d'art ! Hautement recommandé !"</p>
+                <h4>Hassan</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <h2>Contactez-nous</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Adresse</h4>
+                            <p>JX6Q+2PV, Maatkas</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Téléphone</h4>
+                            <p><a href="tel:0559461051">0559461051</a></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Horaires</h4>
+                            <p>8h00 - 17h00 (Tous les jours)</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Votre nom" required>
+                    <input type="email" placeholder="Votre email" required>
+                    <textarea placeholder="Votre message ou commande" rows="5" required></textarea>
+                    <button type="submit" class="submit-btn">Envoyer</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Pâtisserie Fares. Tous droits réservés. | Créations pâtissières artisanales d'exception</p>
+            <div class="social-links">
+                <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
