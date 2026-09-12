@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Pâtisserie Fares</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .blog-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .blog-header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .blog-header h1 {
+            font-size: 3em;
+            color: #FF1493;
+            margin-bottom: 10px;
+            font-family: 'Georgia', serif;
+        }
+
+        .blog-header p {
+            font-size: 1.1em;
+            color: #666;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(255, 20, 147, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.2);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #FF1493, #FFD700);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            color: white;
+        }
+
+        .blog-content {
+            padding: 25px;
+        }
+
+        .blog-date {
+            color: #FFD700;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .blog-title {
+            font-size: 1.5em;
+            color: #FF1493;
+            margin-bottom: 10px;
+            font-family: 'Georgia', serif;
+        }
+
+        .blog-excerpt {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .read-more {
+            color: #FF1493;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: #FFD700;
+            transform: translateX(5px);
+        }
+
+        .read-more::after {
+            content: " →";
+            margin-left: 5px;
+        }
+
+        .blog-category {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF1493, #FFD700);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-top: 10px;
+        }
+
+        .blog-featured {
+            grid-column: span 2;
+        }
+
+        @media (max-width: 768px) {
+            .blog-featured {
+                grid-column: span 1;
+            }
+
+            .blog-header h1 {
+                font-size: 2em;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">🎂 Pâtisserie Fares</div>
+            <div class="nav-links">
+                <a href="index.html">Accueil</a>
+                <a href="menu.html">Menu</a>
+                <a href="galerie.html">Galerie</a>
+                <a href="blog.html" class="active">Blog</a>
+                <a href="avis.html">Avis</a>
+                <a href="about.html">À Propos</a>
+                <a href="reservation.html" class="btn">Réserver</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Section -->
+    <section class="blog-container">
+        <div class="blog-header">
+            <h1>✍️ Notre Blog</h1>
+            <p>Découvrez nos dernières créations et nos conseils de pâtisserie</p>
+        </div>
+
+        <div class="blog-grid">
+            <!-- Article 1 - Vedette -->
+            <article class="blog-card blog-featured">
+                <div class="blog-image">🎂</div>
+                <div class="blog-content">
+                    <div class="blog-date">12 Septembre 2026</div>
+                    <h2 class="blog-title">Gâteau de Mariage Personnalisé : Tendances 2026</h2>
+                    <p class="blog-excerpt">
+                        Découvrez les dernières tendances en matière de gâteaux de mariage. De la décoration géométrique au style bohème, nous vous présentons les créations les plus élégantes de cette année.
+                    </p>
+                    <span class="blog-category">Mariages</span>
+                    <a href="#" class="read-more">Lire la suite</a>
+                </div>
+            </article>
+
+            <!-- Article 2 -->
+            <article class="blog-card">
+                <div class="blog-image">🎉</div>
+                <div class="blog-content">
+                    <div class="blog-date">10 Septembre 2026</div>
+                    <h2 class="blog-title">Gâteaux d'Anniversaire : Idées Créatives</h2>
+                    <p class="blog-excerpt">
+                        Comment choisir le gâteau d'anniversaire parfait ? Nous vous proposons des idées créatives et personnalisées pour rendre votre fête inoubliable.
+                    </p>
+                    <span class="blog-category">Anniversaires</span>
+                    <a href="#" class="read-more">Lire la suite</a>
+                </div>
+            </article>
+
+            <!-- Article 3 -->
+            <article class="blog-card">
+                <div class="blog-image">🍰</div>
+                <div class="blog-content">
+                    <div class="blog-date">8 Septembre 2026</div>
+                    <h2 class="blog-title">Desserts Individuels : Gourmandise à Partager</h2>
+                    <p class="blog-excerpt">
+                        Parfaits pour les événements, nos desserts individuels combinent élégance et saveur. Découvrez notre sélection premium.
+                    </p>
+                    <span class="blog-category">Desserts</span>
+                    <a href="#" class="read-more">Lire la suite</a>
+                </div>
+            </article>
+
+            <!-- Article 4 -->
+            <article class="blog-card">
+                <div class="blog-image">👑</div>
+                <div class="blog-content">
+                    <div class="blog-date">5 Septembre 2026</div>
+                    <h2 class="blog-title">Créations Spéciales : Made to Order</h2>
+                    <p class="blog-excerpt">
+                        Vous rêvez d'une création unique ? Notre équipe de pâtissiers experts réalise vos envies les plus folles. Consultez-nous !
+                    </p>
+                    <span class="blog-category">Spécial</span>
+                    <a href="#" class="read-more">Lire la suite</a>
+                </div>
+            </article>
+
+            <!-- Article 5 -->
+            <article class="blog-card">
+                <div class="blog-image">🍰</div>
+                <div class="blog-content">
+                    <div class="blog-date">1er Septembre 2026</div>
+                    <h2 class="blog-title">Conseils : Comment Conserver vos Gâteaux</h2>
+                    <p class="blog-excerpt">
+                        Pour préserver la fraîcheur et le goût de vos gâteaux, suivez nos conseils d'expert en conservation et stockage.
+                    </p>
+                    <span class="blog-category">Conseils</span>
+                    <a href="#" class="read-more">Lire la suite</a>
+                </div>
+            </article>
+
+            <!-- Article 6 -->
+            <article class="blog-card">
+                <div class="blog-image">✨</div>
+                <div class="blog-content">
+                    <div class="blog-date">28 Août 2026</div>
+                    <h2 class="blog-title">Plateaux Gourmands : Parfaits pour Vos Événements</h2>
+                    <p class="blog-excerpt">
+                        Surprenez vos invités avec nos plateaux gourmands variés. Mélange de saveurs, de couleurs et de textures pour un moment inoubliable.
+                    </p>
+                    <span class="blog-category">Plateaux</span>
+                    <a href="#" class="read-more">Lire la suite</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section style="background: linear-gradient(135deg, #FF1493, #FFD700); padding: 50px 20px; text-align: center; color: white; margin-top: 50px;">
+        <h2 style="font-size: 2em; margin-bottom: 15px;">📧 Inscrivez-vous à Notre Newsletter</h2>
+        <p style="margin-bottom: 25px; font-size: 1.1em;">Recevez nos dernières créations et offres exclusives directement dans votre boîte mail !</p>
+        <form style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+            <input type="email" placeholder="Votre email" required style="padding: 12px 20px; border: none; border-radius: 5px; width: 300px; font-size: 1em;">
+            <button type="submit" style="padding: 12px 30px; background: white; color: #FF1493; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; transition: all 0.3s ease;">S'inscrire</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #333; color: white; padding: 40px 20px; text-align: center; margin-top: 50px;">
+        <div class="container">
+            <p>&copy; 2026 Pâtisserie Fares. Tous droits réservés. | Adresse: JX6Q+2PV, Maatkas | Tél: 0559461051</p>
+            <p>Horaires: 8h00 - 17h00 | Créé avec ❤️ pour vos moments sucrés</p>
+            <div style="margin-top: 15px;">
+                <a href="#" style="color: #FFD700; margin: 0 10px; text-decoration: none;">Facebook</a>
+                <a href="#" style="color: #FFD700; margin: 0 10px; text-decoration: none;">Instagram</a>
+                <a href="#" style="color: #FFD700; margin: 0 10px; text-decoration: none;">WhatsApp</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
