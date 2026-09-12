@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réservation - Pâtisserie Fares | Commandez votre gâteau</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .reservation-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 2rem;
+            background: var(--light-color);
+        }
+
+        .reservation-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .reservation-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--dark-color);
+            margin-bottom: 3rem;
+        }
+
+        .reservation-form-container {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+        }
+
+        .form-section-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(255, 20, 147, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .price-estimate {
+            background: linear-gradient(135deg, #FFE4E1 0%, #FFB6C1 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+
+        .price-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            padding-top: 1rem;
+            border-top: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            margin-right: 0.5rem;
+            cursor: pointer;
+        }
+
+        .checkbox-item label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: normal;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .success-message {
+            display: none;
+            background: #4CAF50;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .info-box {
+            background: #E3F2FD;
+            border-left: 4px solid #2196F3;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .info-box p {
+            margin: 0;
+            color: #1565C0;
+        }
+
+        @media (max-width: 768px) {
+            .reservation-container {
+                padding: 40px 1rem;
+            }
+
+            .reservation-title {
+                font-size: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .reservation-form-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-birthday-cake"></i>
+                <span>Pâtisserie Fares</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="menu.html" class="nav-link">Menu</a></li>
+                <li><a href="galerie.html" class="nav-link">Galerie</a></li>
+                <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="reservation.html" class="nav-link active">Réservation</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Reservation Section -->
+    <div class="reservation-container">
+        <h1 class="reservation-title">📋 Réservez votre Création</h1>
+        <p class="reservation-subtitle">Commandez votre gâteau personnalisé en ligne</p>
+
+        <div class="info-box">
+            <p><i class="fas fa-info-circle"></i> <strong>Délai de livraison :</strong> Minimum 3 jours avant la date souhaitée. Pour les demandes urgentes, appelez-nous au 0559461051</p>
+        </div>
+
+        <div class="reservation-form-container">
+            <form id="reservationForm">
+                <!-- Section 1: Informations Personnelles -->
+                <div class="form-section">
+                    <h3 class="form-section-title">👤 Vos Informations</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nom">Nom *</label>
+                            <input type="text" id="nom" name="nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="prenom">Prénom *</label>
+                            <input type="text" id="prenom" name="prenom" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telephone">Téléphone *</label>
+                            <input type="tel" id="telephone" name="telephone" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="adresse">Adresse de livraison *</label>
+                        <input type="text" id="adresse" name="adresse" required>
+                    </div>
+                </div>
+
+                <!-- Section 2: Détails de la Commande -->
+                <div class="form-section">
+                    <h3 class="form-section-title">🎂 Détails de votre Gâteau</h3>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="type">Type de gâteau *</label>
+                            <select id="type" name="type" required>
+                                <option value="">-- Sélectionnez --</option>
+                                <option value="mariage">Gâteau de Mariage</option>
+                                <option value="anniversaire">Gâteau d'Anniversaire</option>
+                                <option value="fiancailles">Gâteau de Fiançailles</option>
+                                <option value="bapteme">Gâteau de Baptême</option>
+                                <option value="grad">Gâteau de Graduation</option>
+                                <option value="special">Créations Spéciales</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nbrPersonnes">Nombre de personnes *</label>
+                            <input type="number" id="nbrPersonnes" name="nbrPersonnes" min="5" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="dateEvent">Date de l'événement *</label>
+                            <input type="date" id="dateEvent" name="dateEvent" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="heureRetrait">Heure de retrait/livraison *</label>
+                            <input type="time" id="heureRetrait" name="heureRetrait" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="etages">Nombre d'étages *</label>
+                            <select id="etages" name="etages" required>
+                                <option value="">-- Sélectionnez --</option>
+                                <option value="1">1 étage</option>
+                                <option value="2">2 étages</option>
+                                <option value="3">3 étages</option>
+                                <option value="4">4 étages ou plus</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="saveur">Saveur principale *</label>
+                            <select id="saveur" name="saveur" required>
+                                <option value="">-- Sélectionnez --</option>
+                                <option value="vanille">Vanille classique</option>
+                                <option value="chocolat">Chocolat premium</option>
+                                <option value="caramel">Caramel & Beurre</option>
+                                <option value="fruits">Fruits frais</option>
+                                <option value="pistache">Pistache</option>
+                                <option value="personnalisee">Saveur personnalisée</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="couleur">Couleur(s) souhaitée(s) *</label>
+                        <input type="text" id="couleur" name="couleur" placeholder="Ex: Rose poudré, Or, Blanc..." required>
+                    </div>
+                </div>
+
+                <!-- Section 3: Personnalisation -->
+                <div class="form-section">
+                    <h3 class="form-section-title">✨ Personnalisation</h3>
+
+                    <div class="form-group">
+                        <label for="inscription">Inscription/Message sur le gâteau</label>
+                        <input type="text" id="inscription" name="inscription" placeholder="Ex: Joyeux anniversaire Marie !">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Options supplémentaires :</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="fleurs" name="options" value="fleurs">
+                                <label for="fleurs">Fleurs fraîches (+30 DH)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="perles" name="options" value="perles">
+                                <label for="perles">Perles comestibles (+20 DH)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="figurine" name="options" value="figurine">
+                                <label for="figurine">Figurine décoration (+40 DH)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="livraison" name="options" value="livraison">
+                                <label for="livraison">Livraison à domicile (+30 DH)</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Notes spéciales et demandes particulières</label>
+                        <textarea id="notes" name="notes" placeholder="Décrivez vos idées, votre vision, vos contraintes alimentaires..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Section 4: Estimation du Prix -->
+                <div class="form-section">
+                    <h3 class="form-section-title">💰 Estimation du Prix</h3>
+                    <div class="price-estimate">
+                        <div class="price-item">
+                            <span>Gâteau de base (3 étages):</span>
+                            <span>200 DH</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Personnalisation:</span>
+                            <span id="customPrice">0 DH</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Options supplémentaires:</span>
+                            <span id="optionsPrice">0 DH</span>
+                        </div>
+                        <div class="price-total">
+                            <span>Total estimé:</span>
+                            <span id="totalPrice">200 DH</span>
+                        </div>
+                        <p style="font-size: 0.85rem; margin-top: 1rem; text-align: center; color: var(--dark-color);">
+                            * Prix estimé. Confirmation après consultation. Livraison gratuite pour commandes > 400 DH
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Conditions -->
+                <div class="form-section">
+                    <div class="form-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="conditions" name="conditions" required>
+                            <label for="conditions">J'accepte les conditions de réservation et de livraison *</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-check-circle"></i> Envoyer ma Réservation
+                </button>
+
+                <div class="success-message" id="successMessage">
+                    ✅ Réservation envoyée avec succès ! Nous vous recontacterons sous 24h pour confirmer votre commande.
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Pâtisserie Fares. Tous droits réservés. | 0559461051</p>
+            <div class="social-links">
+                <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Calcul du prix
+        const form = document.getElementById('reservationForm');
+        const optionsCheckboxes = document.querySelectorAll('input[name="options"]');
+        const typeSelect = document.getElementById('type');
+        const etagesSelect = document.getElementById('etages');
+
+        function updatePrice() {
+            let basePrice = 200;
+            let customPrice = 0;
+            let optionsPrice = 0;
+
+            // Prix selon le type
+            const type = typeSelect.value;
+            if (type === 'mariage') customPrice += 100;
+            if (type === 'special') customPrice += 150;
+
+            // Prix selon les étages
+            const etages = etagesSelect.value;
+            if (etages === '2') customPrice += 50;
+            if (etages === '3') customPrice += 100;
+            if (etages === '4') customPrice += 200;
+
+            // Prix des options
+            optionsCheckboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    if (checkbox.value === 'fleurs') optionsPrice += 30;
+                    if (checkbox.value === 'perles') optionsPrice += 20;
+                    if (checkbox.value === 'figurine') optionsPrice += 40;
+                    if (checkbox.value === 'livraison') optionsPrice += 30;
+                }
+            });
+
+            const total = basePrice + customPrice + optionsPrice;
+
+            document.getElementById('customPrice').textContent = customPrice + ' DH';
+            document.getElementById('optionsPrice').textContent = optionsPrice + ' DH';
+            document.getElementById('totalPrice').textContent = total + ' DH';
+        }
+
+        typeSelect.addEventListener('change', updatePrice);
+        etagesSelect.addEventListener('change', updatePrice);
+        optionsCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updatePrice);
+        });
+
+        // Gestion du formulaire
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Validation
+            if (!form.checkValidity()) {
+                alert('Veuillez remplir tous les champs obligatoires');
+                return;
+            }
+
+            // Simuler l'envoi
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+
+            // Réinitialiser le formulaire
+            setTimeout(() => {
+                form.reset();
+                updatePrice();
+                successMessage.style.display = 'none';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 3000);
+        });
+
+        // Initialiser le prix
+        updatePrice();
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
