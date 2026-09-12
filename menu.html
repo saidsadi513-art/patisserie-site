@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Pâtisserie Fares | Gâteaux & Desserts</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .menu-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 2rem;
+            background: var(--light-color);
+        }
+
+        .menu-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .menu-category {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .menu-category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .category-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: var(--white);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .category-header h3 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .category-header i {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .category-items {
+            padding: 1.5rem;
+        }
+
+        .menu-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .menu-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .menu-item-name {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .menu-item-description {
+            color: var(--dark-color);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .menu-item-price {
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .menu-note {
+            text-align: center;
+            font-style: italic;
+            color: var(--dark-color);
+            margin: 2rem 0;
+            padding: 1rem;
+            background: linear-gradient(135deg, #FFB6C1 0%, #FFE4E1 100%);
+            border-radius: 10px;
+        }
+
+        .order-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .order-cta a {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .order-cta a:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        @media (max-width: 768px) {
+            .menu-container {
+                padding: 40px 1rem;
+            }
+
+            .menu-title {
+                font-size: 2rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-birthday-cake"></i>
+                <span>Pâtisserie Fares</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="menu.html" class="nav-link active">Menu</a></li>
+                <li><a href="galerie.html" class="nav-link">Galerie</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Menu Section -->
+    <div class="menu-container">
+        <h1 class="menu-title">🎂 Notre Menu</h1>
+        
+        <div class="menu-grid">
+            <!-- Gâteaux de Mariage -->
+            <div class="menu-category">
+                <div class="category-header">
+                    <i class="fas fa-ring"></i>
+                    <h3>Gâteaux de Mariage</h3>
+                </div>
+                <div class="category-items">
+                    <div class="menu-item">
+                        <div class="menu-item-name">Gâteau Rose Luxe</div>
+                        <div class="menu-item-description">Trois étages en rose poudré avec décor raffiné et fleurs fraîches</div>
+                        <div class="menu-item-price">À partir de 350 DH</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Gâteau Moderne Géométrique</div>
+                        <div class="menu-item-description">Design contemporain avec bandes colorées et touches dorées</div>
+                        <div class="menu-item-price">À partir de 380 DH</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Gâteau Personnalisé</div>
+                        <div class="menu-item-description">Créez votre propre design selon vos envies et vos couleurs</div>
+                        <div class="menu-item-price">À partir de 300 DH</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gâteaux d'Anniversaire -->
+            <div class="menu-category">
+                <div class="category-header">
+                    <i class="fas fa-birthday-cake"></i>
+                    <h3>Gâteaux d'Anniversaire</h3>
+                </div>
+                <div class="category-items">
+                    <div class="menu-item">
+                        <div class="menu-item-name">Gâteau Coloré Fun</div>
+                        <div class="menu-item-description">Gâteau aux couleurs vives, parfait pour les enfants</div>
+                        <div class="menu-item-price">À partir de 150 DH</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Gâteau Gourmand</div>
+                        <div class="menu-item-description">Gâteau multi-étages avec fruits frais et décoration élégante</div>
+                        <div class="menu-item-price">À partir de 200 DH</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Gâteau Premium</div>
+                        <div class="menu-item-description">Création luxe avec perlage et fleurs comestibles</div>
+                        <div class="menu-item-price">À partir de 250 DH</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desserts Individuels -->
+            <div class="menu-category">
+                <div class="category-header">
+                    <i class="fas fa-cupcake"></i>
+                    <h3>Desserts Individuels</h3>
+                </div>
+                <div class="category-items">
+                    <div class="menu-item">
+                        <div class="menu-item-name">Macarons Assortis</div>
+                        <div class="menu-item-description">Boîte de 6 macarons saveurs variées (rose, vanille, chocolat, pistache)</div>
+                        <div class="menu-item-price">80 DH</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Éclairs Gourmands</div>
+                        <div class="menu-item-description">Boîte de 4 éclairs aux parfums délicats</div>
+                        <div class="menu-item-price">60 DH</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Verrines Raffinées</div>
+                        <div class="menu-item-description">Assortiment de 4 verrines chocolat, fruits et crème</div>
+                        <div class="menu-item-price">90 DH</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Créations Spéciales -->
+            <div class="menu-category">
+                <div class="category-header">
+                    <i class="fas fa-sparkles"></i>
+                    <h3>Créations Spéciales</h3>
+                </div>
+                <div class="category-items">
+                    <div class="menu-item">
+                        <div class="menu-item-name">Pièce Montée</div>
+                        <div class="menu-item-description">Création exceptionnelle pour événements importants</div>
+                        <div class="menu-item-price">À partir de 500 DH</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Gâteau Miroir</div>
+                        <div class="menu-item-description">Glaçage miroir brillant avec fruits et décor luxe</div>
+                        <div class="menu-item-price">À partir de 280 DH</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Naked Cake</div>
+                        <div class="menu-item-description">Gâteau déstructuré avec fruits frais et décor naturel</div>
+                        <div class="menu-item-price">À partir de 220 DH</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plateau Gourmand -->
+            <div class="menu-category">
+                <div class="category-header">
+                    <i class="fas fa-cookie"></i>
+                    <h3>Plateaux Gourmands</h3>
+                </div>
+                <div class="category-items">
+                    <div class="menu-item">
+                        <div class="menu-item-name">Plateau Petit (10 personnes)</div>
+                        <div class="menu-item-description">Assortiment variés de pâtisseries</div>
+                        <div class="menu-item-price">150 DH</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Plateau Moyen (20 personnes)</div>
+                        <div class="menu-item-description">Large sélection de nos créations</div>
+                        <div class="menu-item-price">300 DH</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Plateau Grand (40 personnes)</div>
+                        <div class="menu-item-description">Création sur mesure avec variété complète</div>
+                        <div class="menu-item-price">600 DH</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services Additionnels -->
+            <div class="menu-category">
+                <div class="category-header">
+                    <i class="fas fa-gift"></i>
+                    <h3>Services Additionnels</h3>
+                </div>
+                <div class="category-items">
+                    <div class="menu-item">
+                        <div class="menu-item-name">Livraison à domicile</div>
+                        <div class="menu-item-description">Transport sécurisé de votre commande</div>
+                        <div class="menu-item-price">30 DH (gratuit pour commandes >400 DH)</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Consultation créative</div>
+                        <div class="menu-item-description">Design personnalisé avec nos artisans</div>
+                        <div class="menu-item-price">Gratuit</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Emballage Premium</div>
+                        <div class="menu-item-description">Boîte luxe avec ruban et décoration</div>
+                        <div class="menu-item-price">25 DH</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-note">
+            <p><strong>📝 Note importante :</strong> Tous les prix sont indicatifs. Pour des commandes personnalisées ou spéciales, nous vous recommandons de nous contacter directement pour un devis. Les délais de préparation varient selon la complexité de la création.</p>
+        </div>
+
+        <div class="order-cta">
+            <a href="index.html#contact">
+                <i class="fas fa-phone"></i> Commander maintenant
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Pâtisserie Fares. Tous droits réservés. | 0559461051</p>
+            <div class="social-links">
+                <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
